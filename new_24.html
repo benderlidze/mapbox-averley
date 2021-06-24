@@ -1678,6 +1678,7 @@
 
             //amenities categories with icons
             getObject('object_7').then(json => {
+
                 const am = [];
                 mainData.amenities = [];
                 mainData.amenitiesDiv = {};
@@ -1756,7 +1757,6 @@
             //list of amenities
             getObject('object_9').then(data => {
 
-                // console.log('Amenity', data);
 
                 // data = data
 
@@ -1816,6 +1816,7 @@
                         let amId = (new DOMParser()).parseFromString(i['Amenity_Category_ID'], 'text/html').querySelector('span');
                         amId = +amId.innerText;
 
+                        console.log('--',i['Amenity_Category_Name']);
 
                         const latlng = [+i['Amenity Longitude'], +i['Amenity_Latitude']];
                         return {
@@ -1827,11 +1828,11 @@
                             properties: {
                                 ...i,
                                 icon: i['Amenity_Category_Name'] + "_off",
-                                amId: +i['Amenity_Category_ID']
+                                amId: amId
                             }
                         };
                     })
-                // console.log('amLilstInternal', amLilstInternal);
+                console.log('amLilstInternal', amLilstInternal);
                 map.getSource("amenitiesInternal").setData({
                     "type": "FeatureCollection",
                     "features": amLilstInternal
@@ -1858,7 +1859,7 @@
                 "url": "LL_Averley_Stage_Plan_1B_V5_June_temp-01_modified_hires.png",
                 "coordinates": [
                     //[145.545245351, -38.055111238], [145.526995177, -38.055111238], [145.526995177, -38.066244077], [145.545245351, -38.066244077]
-                    [145.527022631,-38.054994253],[145.545260228,-38.054994253],[145.545260228,-38.066247341],[145.527022631,-38.066247341]
+                    [145.527022631, -38.054994253], [145.545260228, -38.054994253], [145.545260228, -38.066247341], [145.527022631, -38.066247341]
                 ]
             });
             map.addLayer({
